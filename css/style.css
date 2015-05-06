@@ -1,0 +1,21 @@
+body {
+    text-align: center;
+}
+
+h2 {
+    color: green;
+    font-size: 40px;
+    margin: 2px;
+}
+
+p {
+    color: green;
+    font-size: 30px;
+    margin: 2px;
+    font-family: Geramond;
+}
+
+#over, #refresh a {
+    color: blue;
+    font-style: italic;
+}
