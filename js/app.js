@@ -2,9 +2,9 @@
 var positionBug = [65, 150, 235];
 var score = 0;
 var gameOver = false;
-var gameOverSound = new Audio('audio_file.mp3');
-var audio = new Audio('audio_file.mp3');
-var audio = new Audio('audio_file.mp3');
+var gameOverSound = new Audio('music/gameover.mp3');
+var bugHit = new Audio('music/insect.mp3');
+var waterLevel = new Audio('music/water.mp3');
 
 var Gems = function (x, y, sprite) {
     this.sprite = sprite;
@@ -107,6 +107,7 @@ Player.prototype.handleInput = function(key){
         this.x = 201;
         this.y = 400;
         score += 5;
+        waterLevel.play();
       }              
       player.currScore();
     }
@@ -140,6 +141,7 @@ function collision(enemy, player) {
   if(player.x >= enemy.x - 30 && player.x <= enemy.x + 30){
     if(player.y >= enemy.y - 30 && player.y <= enemy.y + 30){ 
       score -= 2;
+      bugHit.play();
       if(score <= 0) { 
         document.getElementById('over').innerHTML = "Oops! Game Over"; 
         allEnemies = [];
@@ -148,6 +150,7 @@ function collision(enemy, player) {
         gameOver = true;
         score = 0; 
         player.currScore();
+        gameOverSound.play();
         document.getElementById("refresh").innerHTML = "<a href='#' onclick='location.reload()'>Try again</a>";  
       } else {
         player.currScore();
